@@ -1,21 +1,21 @@
 
-NAME	= fixed
+NAME		= fixed
 
-CC		= c++
+CXX			= c++
 
-FLAGS	= -Wall -Werror -Wextra -std=c++98
+CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
-SRC		= main.cpp Fixed.cpp
+OBJ 		= $(SRC:%.cpp=%.o)
 
-OBJ = $(SRC:%.c=%.o)
+SRC			= main.cpp Fixed.cpp
 
 all		: $(NAME)
 
 $(NAME)	: $(OBJ)
-		$(CC) $(FLAGS) $(SRC) -o $(NAME)
+		$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean	:
-	rm -rf $(NAME)
+	rm -rf $(OBJ)
 
 fclean	: clean
 	rm -rf $(NAME)
