@@ -6,16 +6,15 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 22:21:35 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/08/23 10:26:30 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:46:50 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed() : _value(0)
 {
     std::cout << "Default constructor called" << std::endl;
-    this->_value = 0;
 }
 
 Fixed::~Fixed()
@@ -46,16 +45,14 @@ void Fixed::setRawBits(int const raw)
     this->_value = raw;
 }
 
-Fixed::Fixed(const int value)
+Fixed::Fixed(const int value) : _value(value * (1 << this->_bits))
 {
     std::cout << "Int constructor called" << std::endl;
-    this->_value = value * (1 << this->_bits);
 }
 
-Fixed::Fixed(const float value)
+Fixed::Fixed(const float value) : _value(roundf(value * (1 << this->_bits)))
 {
     std::cout << "Float constructor called" << std::endl;
-    this->_value = roundf(value * (1 << this->_bits));
 }
 
 float Fixed::toFloat(void) const
